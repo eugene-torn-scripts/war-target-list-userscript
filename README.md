@@ -4,7 +4,7 @@ A userscript for the faction war page of [Torn](https://www.torn.com). It shows 
 statuses and FFScouter battle stats in Torn's own war list. Your faction must use 39th
 (ultimata.net) for calls.
 
-**[Install War Target List](https://raw.githubusercontent.com/eugene-torn-scripts/war-target-list-userscript/main/war-target-list.user.js)** (version 0.6.8)
+**[Install War Target List](https://raw.githubusercontent.com/eugene-torn-scripts/war-target-list-userscript/main/war-target-list.user.js)** (version 0.6.9)
 
 ## What it does
 
@@ -22,12 +22,33 @@ statuses and FFScouter battle stats in Torn's own war list. Your faction must us
 
 ## Install
 
-- **Tampermonkey** (version 5.3.2 or later): open the install link above, then confirm.
+- **On a computer, use [Violentmonkey](https://violentmonkey.github.io/)**: open the install link
+  above, then confirm. Calls are faster there than in Tampermonkey (see
+  [Faster calls on a computer](#faster-calls-on-a-computer)).
+- **Tampermonkey** (version 5.3.2 or later) also works, but each call takes about 0.13 s longer.
 - **Torn PDA**: add a new userscript, paste the content of
   [war-target-list.user.js](war-target-list.user.js), and check that its injection time is
   **Start**.
 
-Both apps check the link in the script for new versions.
+All three apps check the link in the script for new versions.
+
+## Faster calls on a computer
+
+Tampermonkey holds each request for about 0.1 s before it sends it, so each call takes about
+0.13 s longer than in Violentmonkey or Torn PDA. When the script finds this delay, the bar shows a
+notice with a **How to move** link to this section. Violentmonkey is available for Chrome, Edge
+and Firefox, but not for Safari.
+
+1. Install Violentmonkey from your browser's extension store.
+2. In Chrome or Edge, open the extensions page, open **Details** of Violentmonkey, and turn on
+   **Allow User Scripts**. In older versions, turn on **Developer mode** instead.
+3. In Tampermonkey, delete War Target List. You can keep your other scripts in Tampermonkey: both
+   managers can run at the same time.
+4. Open the install link above and confirm in Violentmonkey. If Tampermonkey also opens an install
+   page, close it.
+5. Reload the faction war page. Violentmonkey keeps its own settings, so paste your Torn API key in
+   Settings again and tap **Log in**.
+6. Make sure that the bar shows **39th live** and **Torn live**.
 
 ## First start
 
@@ -42,7 +63,10 @@ Both apps check the link in the script for new versions.
 - **Torn live**: the script gets Torn's live status updates. **Torn not live** means that the script
   started too late: in Torn PDA, set the injection time to **Start**, then reload the page.
 - **Calls slow**: your userscript manager sends one request at a time, so your calls can wait up to
-  25 s. Update Tampermonkey to 5.3.2 or later, then reload the page.
+  25 s. Move the script to Violentmonkey (see
+  [Faster calls on a computer](#faster-calls-on-a-computer)), then reload the page.
+- A notice says how much slower Tampermonkey makes each call, with a link to the steps above.
+  **Hide** keeps it away.
 
 ## Your data
 
