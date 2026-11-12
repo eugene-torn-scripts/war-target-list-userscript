@@ -4,12 +4,12 @@ A userscript for the faction war page of [Torn](https://www.torn.com). It shows 
 statuses and FFScouter battle stats in Torn's own war list. Your faction must use 39th
 (ultimata.net) for calls.
 
-**[Install War Target List](https://raw.githubusercontent.com/eugene-torn-scripts/war-target-list-userscript/main/war-target-list.user.js)** (version 0.6.9)
+**[Install War Target List](https://raw.githubusercontent.com/eugene-torn-scripts/war-target-list-userscript/main/war-target-list.user.js)** (version 0.6.10)
 
 ## What it does
 
-- Call and uncall targets on 39th from the war list. The button shows **Call**, **You**, or the
-  name of the member who called the target.
+- Call and uncall targets on 39th from the war list. The button shows **Call**, the seconds left on
+  your call (for example **298s**), or the name of the member who called the target.
 - Live statuses from Torn, with hospital timers. Rows move at once when a status changes. The
   default sort puts Okay targets first, then the shortest hospital time.
 - The targets that leadership assigned to you on 39th are highlighted, with their order.

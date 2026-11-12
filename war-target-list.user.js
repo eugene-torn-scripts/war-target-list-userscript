@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         War Target List
 // @namespace    eugene-torn-scripts
-// @version      0.6.9
+// @version      0.6.10
 // @description  Torn faction war list with Ultimata (39th) dibs and FFScouter stats, for Torn PDA, Violentmonkey and Tampermonkey.
 // @author       lannav
 // @homepageURL  https://github.com/eugene-torn-scripts/war-target-list-userscript
@@ -2151,6 +2151,13 @@ runContent: () => {
         return tip;
     }
 
+    function myCallLabel(mine) {
+        const ttlSec = Number(store.war?.auto_undibs) || 0;
+        const calledAt = Date.parse(mine?.dibsed_at);
+        if (!ttlSec || !Number.isFinite(calledAt)) return "You";
+        return `${Math.max(0, Math.ceil((calledAt + ttlSec * 1000 - Date.now()) / 1000))}s`;
+    }
+
     function paintCall(row, id) {
         const button = ensureCallButton(row, id);
         if (!button) return;
@@ -2162,7 +2169,7 @@ runContent: () => {
         const locked = !mine && !full && perPerson > 0 && store.myDibCount >= perPerson;
         const call = store.busy.get(id);
         const waiting = !!call && !call.done;
-        setText(button, waiting ? "…" : mine ? "You" : other ? String(other.dibser_name) : "Call");
+        setText(button, waiting ? "…" : mine ? myCallLabel(mine) : other ? String(other.dibser_name) : "Call");
         const override = full ? "1" : "0";
         if (button.dataset.override !== override) button.dataset.override = override;
         const cls = `wtl-call${mine ? " wtl-call-mine" : ""}${full ? " wtl-call-taken" : ""}${locked ? " wtl-call-locked" : ""}`;
@@ -2617,7 +2624,7 @@ runContent: () => {
             <div class="wtl-field">
                 <span class="wtl-label">Call expiry</span>
                 <span class="wtl-control"><input type="checkbox" class="wtl-switch" data-wtl="callalert"><input type="text" inputmode="numeric" data-wtl="calllead" size="3">s before</span>
-                <span class="wtl-hint">Beeps before 39th drops your call, so you can call again: tap You, then Call.</span>
+                <span class="wtl-hint">Beeps before 39th drops your call, so you can call again: tap your countdown, then Call.</span>
             </div>
             <div class="wtl-field">
                 <span class="wtl-label">Alert</span>
@@ -3039,6 +3046,7 @@ runContent: () => {
             paintStatus(row, id);
             paintSeen(row, id);
             paintOnline(row, id);
+            if (store.myDibCount && myDibFor(id)) paintCall(row, id);
         });
         applySort();
         checkHospitalAlerts();
