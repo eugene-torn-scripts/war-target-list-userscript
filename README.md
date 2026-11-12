@@ -4,7 +4,7 @@ A userscript for the faction war page of [Torn](https://www.torn.com). It shows 
 statuses and FFScouter battle stats in Torn's own war list. Your faction must use 39th
 (ultimata.net) for calls.
 
-**[Install War Target List](https://raw.githubusercontent.com/eugene-torn-scripts/war-target-list-userscript/main/war-target-list.user.js)** (version 0.6.10)
+**[Install War Target List](https://raw.githubusercontent.com/eugene-torn-scripts/war-target-list-userscript/main/war-target-list.user.js)** (version 0.6.11)
 
 ## What it does
 

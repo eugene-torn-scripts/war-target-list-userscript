@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         War Target List
 // @namespace    eugene-torn-scripts
-// @version      0.6.10
+// @version      0.6.11
 // @description  Torn faction war list with Ultimata (39th) dibs and FFScouter stats, for Torn PDA, Violentmonkey and Tampermonkey.
 // @author       lannav
 // @homepageURL  https://github.com/eugene-torn-scripts/war-target-list-userscript
@@ -10,7 +10,7 @@
 // @match        https://www.torn.com/factions.php*
 // @match        https://www.torn.com/loader.php*
 // @run-at       document-start
-// @sandbox      JavaScript
+// @sandbox      raw
 // @grant        GM_xmlhttpRequest
 // @grant        GM_getValue
 // @grant        GM_setValue
